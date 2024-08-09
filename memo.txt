@@ -1,0 +1,11 @@
+#features Vessiの特徴セクション
+　 #feature_waterproof
+   #feature_comfort
+   #feature_lightweight
+   #feature_vegan
+#products
+#shipping
+#review
+#exchange
+#faq
+#currentYear
