@@ -1,11 +1,28 @@
-#features Vessiの特徴セクション
-　 #feature_waterproof
-   #feature_comfort
-   #feature_lightweight
-   #feature_vegan
+#mv
+   .mv-text1
+   .mv-text2
+#header
+   .nav-list
+   .sns-list
+#features
+　　#features_sidebar
+      #features_sidebar_container
+   #features_all
+　   #feature_waterproof
+      .feature_container
+        .feature_title
+          .feature_icon
+          .cloud_azure1
+   　 .feature_img
+       以下、同じ構成(cloud_azureは連番)
+    #feature_comfort
+    #feature_lightweight
+    #feature_vegan
 #products
 #shipping
 #review
 #exchange
 #faq
 #currentYear
+
+idの中のクラスに対して、CSSが効かないということはあるか？

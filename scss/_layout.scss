@@ -1,0 +1,259 @@
+#mv {
+    position: relative;
+    // width: 100%;
+    height: 100vh;
+    background: url("../img/Weekend_MarbleWhite5_ex.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    .mv-text1 {
+        position: absolute;
+        top: 30%;
+        left: 70%;
+        font-size: 3vw;
+    }
+
+    .mv-text2 {
+        position: absolute;
+        bottom: 20%;
+        left: 10%;
+        font-size: 3vw;
+    }
+
+    .logo {
+        position: absolute;
+        bottom: 20px;
+        left: 80%;
+        translate: -50% 0%;
+        width: 40vw;
+    }
+}
+
+#header {
+    width: 100%;
+    height: 65px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0px;
+    background-color: var(--color-white);
+    z-index: 300;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+
+    img {
+        width: 160px;
+        translate: 0 5px;
+    }
+
+    nav {
+        width: calc(100% - 400px);
+    }
+
+    .nav-list {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        list-style-type: none;
+        font-size: 0.9vw;
+
+        li a {
+            text-decoration: none;
+            color: var(--color-text_color);
+            margin: 0 10px;
+            display: block;
+            text-align: center;
+
+            span {
+                display: inline-block;
+            }
+        }
+    }
+
+    .sns-list {
+        display: none;
+    }
+
+    button {
+        width: 200px;
+        height: 40px;
+        color: var(--color-white);
+        background-color: var(--color-midnight_green);
+        border: none;
+        cursor: pointer;
+
+    }
+
+    span {
+        display: none;
+    }
+
+}
+
+#features {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: normal;
+    background-color: var(--color-white);
+
+    #features_sidebar {
+        width: 20vw;
+        height: 5000px; //仮置き
+        padding: 50px 10px;
+        margin-left: 10vw;
+        background-color: var(--color-azure);
+        z-index: 200;
+
+        #features_sidebar_container {
+            width: 18vw;
+            position: sticky;
+            top: 105px;
+            display: flex;
+            flex-direction: column;
+
+            h2 {
+                font-size: 2vw;
+                margin: 0 auto;
+            }
+
+            ul {
+                height: 50vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                list-style-type: none;
+                font-size: 1.2vw;
+                line-height: 2.5vw;
+                margin: 100px auto;
+
+                li a {
+                    width: 14vw;
+                    text-decoration: none;
+                    color: var(--color-text_color);
+                    display: flex;
+                    justify-content: space-between;
+                    text-align: center;
+
+                    img {
+                        width: 50px;
+                    }
+
+                    p {
+                        width: 50%;
+                        font-size: 1vw;
+                        line-height: 120%;
+                        margin: auto auto auto 20px;
+
+                    }
+                }
+            }
+
+        }
+    }
+
+    #features_all {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: calc(100vw - 30vw - 20px);
+
+        #feature_waterproof,
+        #feature_comfort,
+        #feature_lightweight,
+        #feature_vegan {
+            height: 100vh;
+            width: calc(100vw - 30vw - 20px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: var(--color-white);
+            position: absolute;
+            left: 30vw;
+            z-index: 100;
+
+
+            .feature_container {
+                display: flex;
+                flex-direction: column;
+                margin: auto 100px;
+                position: relative;
+                font-size: 0.9vw;
+                line-height: 2.5vw;
+                z-index: 100;
+
+                .feature_title {
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: 40px;
+
+                    .feature_icon {
+                        width: 60px;
+                        margin: 10px 0;
+                        color: var(--color-text_color);
+                    }
+
+                    h3 {
+                        font-size: 2.4vw;
+                        align-self: center;
+                        padding: 0 20px;
+                    }
+                }
+
+                h4 {
+                    font-size: 2vw;
+                    line-height: normal;
+                    margin-bottom: 40px;
+                    width: fit-content;
+                    background-color: rgba(255, 255, 255, 0.5);
+
+                }
+
+                p {
+                    font-size: 1.6vw;
+                    line-height: 160%;
+                    width: fit-content;
+                    background-color: rgba(255, 255, 255, 0.5);
+                }
+
+                .cloud_azure1,
+                .cloud_azure2,
+                .cloud_azure3,
+                .cloud_azure4 {
+                    width: 100px;
+                    z-index: -1;
+                }
+
+                .cloud_azure1 {
+                    position: absolute;
+                    top: 0;
+                    left: 5px;
+                    width: 100px;
+                    z-index: -1;
+                }
+
+                .cloud_azure2,
+                .cloud_azure3,
+                .cloud_azure4 {
+                    display: none;
+                }
+            }
+
+            .feature_img {
+                position: absolute;
+                right: 20px;
+                width: 30vw;
+                z-index: 0;
+                opacity: 0.6;
+
+            }
+        }
+
+
+
+    }
+}
