@@ -103,7 +103,6 @@
 
     #features_sidebar {
         width: 20vw;
-        height: 5000px; //仮置き
         padding: 50px 10px;
         margin-left: 10vw;
         background-color: var(--color-azure);
@@ -159,7 +158,6 @@
     #features_all {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         width: calc(100vw - 30vw - 20px);
 
         #feature_waterproof,
@@ -172,10 +170,7 @@
             flex-direction: column;
             justify-content: center;
             background-color: var(--color-white);
-            position: absolute;
-            left: 30vw;
             z-index: 100;
-
 
             .feature_container {
                 display: flex;
@@ -224,22 +219,29 @@
                 .cloud_azure2,
                 .cloud_azure3,
                 .cloud_azure4 {
-                    width: 100px;
+                    width: 150px;
+                    position: absolute;
                     z-index: -1;
                 }
 
                 .cloud_azure1 {
-                    position: absolute;
-                    top: 0;
-                    left: 5px;
-                    width: 100px;
-                    z-index: -1;
+                    top: -10;
+                    left: -20px;
                 }
 
-                .cloud_azure2,
-                .cloud_azure3,
+                .cloud_azure2 {
+                    top: -20px;
+                    left: 40px;
+                }
+
+                .cloud_azure3 {
+                    top: 20px;
+                    left: 20px;
+                }
+
                 .cloud_azure4 {
-                    display: none;
+                    top: -30px;
+                    left: 30px;
                 }
             }
 
@@ -256,4 +258,56 @@
 
 
     }
+}
+
+#products {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url("../img/shoes on the beach_ex3.jpg");
+    background-size:contain;
+    background-position: top;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 80px 80px;
+    z-index: 1;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(20deg, rgba(255, 255, 255, 1) 60%, rgba(255, 255, 255, 0.5) 80%);
+        z-index: 2;
+    }
+
+    h2,
+    p,
+    div {
+        z-index: 3;
+    }
+
+    h2 {
+        font-size: 2vw;
+        margin-left: 5vw;
+    }
+
+    p{
+        font-size: 1.4vw;
+        margin: 20px 10vw;
+        line-height: 200%;
+    }
+
+
+
+
+
+
+}
+
+dd img {
+    width: 50px;
 }
