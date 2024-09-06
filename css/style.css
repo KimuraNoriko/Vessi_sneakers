@@ -24,26 +24,26 @@ p {
   color: var(--color-text_color);
 }
 
-#mv {
+#pc_mv {
   position: relative;
   height: 100vh;
   background: url("../img/Weekend_MarbleWhite5_ex.jpg") no-repeat;
   background-size: cover;
   background-position: center;
 }
-#mv .mv-text1 {
+#pc_mv .mv-text1 {
   position: absolute;
   top: 30%;
   left: 70%;
   font-size: 3vw;
 }
-#mv .mv-text2 {
+#pc_mv .mv-text2 {
   position: absolute;
   bottom: 20%;
   left: 10%;
   font-size: 3vw;
 }
-#mv .logo {
+#pc_mv .logo {
   position: absolute;
   bottom: 20px;
   left: 80%;
@@ -51,7 +51,7 @@ p {
   width: 40vw;
 }
 
-#header {
+#pc_nav {
   width: 100%;
   height: 65px;
   padding: 0 20px;
@@ -65,14 +65,14 @@ p {
   z-index: 300;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
-#header img {
+#pc_nav img {
   width: 160px;
   translate: 0 5px;
 }
-#header nav {
+#pc_nav nav {
   width: calc(100% - 400px);
 }
-#header .nav-list {
+#pc_nav .nav-list {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -80,20 +80,20 @@ p {
   list-style-type: none;
   font-size: 0.9vw;
 }
-#header .nav-list li a {
+#pc_nav .nav-list li a {
   text-decoration: none;
   color: var(--color-text_color);
   margin: 0 10px;
   display: block;
   text-align: center;
 }
-#header .nav-list li a span {
+#pc_nav .nav-list li a span {
   display: inline-block;
 }
-#header .sns-list {
+#pc_nav .sns-list {
   display: none;
 }
-#header button {
+#pc_nav button {
   width: 200px;
   height: 40px;
   color: var(--color-white);
@@ -101,37 +101,195 @@ p {
   border: none;
   cursor: pointer;
 }
-#header span {
+#pc_nav span {
   display: none;
 }
 
+#sp_header {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  #pc_mv,
+  .pc_nav {
+    display: none;
+  }
+  #sp_header {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  #sp_header #sp_top {
+    width: 100%;
+    height: 65px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    position: fixed;
+    top: 0px;
+    background-color: var(--color-white);
+    z-index: 400;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+  #sp_header #sp_top img {
+    width: 140px;
+    translate: 0 5px;
+  }
+  #sp_header #sp_top .shop-btn {
+    width: 35%;
+    height: 36px;
+    color: var(--color-white);
+    background-color: var(--color-midnight_green);
+    border: none;
+    cursor: pointer;
+  }
+  #sp_header #sp_top #hamburger-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  #sp_header #sp_top #hamburger-btn span {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 35px;
+    height: 1px;
+    background-color: var(--color-text_color);
+    transform-origin: center;
+  }
+  #sp_header #sp_top #hamburger-btn span::before {
+    content: "";
+    display: block;
+    width: 35px;
+    height: 1px;
+    background-color: var(--color-text_color);
+    transform: translateY(-12px);
+    transition: transform 0.8s ease-in-out;
+  }
+  #sp_header #sp_top #hamburger-btn span::after {
+    content: "";
+    display: block;
+    width: 35px;
+    height: 1px;
+    background-color: var(--color-text_color);
+    transform: translateY(11px);
+    transition: transform 0.8s ease-in-out;
+  }
+  #sp_header #sp_top #hamburger-btn.change {
+    transition: all 0.8s ease;
+  }
+  #sp_header #sp_top #hamburger-btn.change span {
+    width: 0;
+  }
+  #sp_header #sp_top #hamburger-btn.change span::before {
+    transform: rotate(45deg);
+  }
+  #sp_header #sp_top #hamburger-btn.change span::after {
+    transform: rotate(-45deg);
+  }
+  #sp_header #sp_mv {
+    width: 100%;
+    height: calc(100vh - 65px);
+    background-image: url(../img/shoes_in_water_ex.png);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+  }
+  #sp_header #sp_mv .mv-text1 {
+    margin: 30px 20px 40px auto;
+  }
+  #sp_header #sp_mv .mv-text2 {
+    margin: 20px auto auto 30px;
+  }
+  #sp_header #sp_mv .logo {
+    width: 80%;
+    margin: auto auto 20px;
+  }
+  #sp_header #sp_nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100vh - 65px);
+    background-color: var(--color-midnight_green);
+    color: var(--color-white);
+    position: fixed;
+    top: 65px;
+    z-index: 300;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+  }
+  #sp_header #sp_nav .nav_list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style-type: none;
+    line-height: 3vw;
+    margin: 80px auto 40px;
+  }
+  #sp_header #sp_nav .nav_list li {
+    margin: 30px 0;
+  }
+  #sp_header #sp_nav .nav_list li a {
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--color-white);
+  }
+  #sp_header #sp_nav .sns_list {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    margin: 20px auto;
+  }
+  #sp_header #sp_nav .sns_list img {
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+  }
+  #sp_header #sp_nav.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 #features {
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: normal;
   background-color: var(--color-white);
+  display: flex;
+  flex-direction: column;
 }
-#features #features_sidebar {
-  width: 20vw;
+#features div {
+  display: flex;
+}
+#features div #features_sidebar {
+  width: 200px;
+  height: 100vh;
   padding: 50px 10px;
   margin-left: 10vw;
   background-color: var(--color-azure);
   z-index: 200;
-}
-#features #features_sidebar #features_sidebar_container {
-  width: 18vw;
   position: sticky;
-  top: 105px;
+  top: 65px;
+}
+#features div #features_sidebar #features_sidebar_container {
+  width: 180px;
   display: flex;
   flex-direction: column;
 }
-#features #features_sidebar #features_sidebar_container h2 {
+#features div #features_sidebar #features_sidebar_container h2 {
+  text-align: center;
+  padding: 20px 0;
+  z-index: 200;
   font-size: 2vw;
-  margin: 0 auto;
 }
-#features #features_sidebar #features_sidebar_container ul {
+#features div #features_sidebar #features_sidebar_container ul {
   height: 50vh;
   display: flex;
   flex-direction: column;
@@ -141,7 +299,7 @@ p {
   line-height: 2.5vw;
   margin: 100px auto;
 }
-#features #features_sidebar #features_sidebar_container ul li a {
+#features div #features_sidebar #features_sidebar_container ul li a {
   width: 14vw;
   text-decoration: none;
   color: var(--color-text_color);
@@ -149,36 +307,36 @@ p {
   justify-content: space-between;
   text-align: center;
 }
-#features #features_sidebar #features_sidebar_container ul li a img {
+#features div #features_sidebar #features_sidebar_container ul li a img {
   width: 50px;
 }
-#features #features_sidebar #features_sidebar_container ul li a p {
+#features div #features_sidebar #features_sidebar_container ul li a p {
   width: 50%;
   font-size: 1vw;
   line-height: 120%;
   margin: auto auto auto 20px;
 }
-#features #features_all {
+#features div #features_all {
+  width: 75vw;
   display: flex;
   flex-direction: column;
-  width: calc(70vw - 20px);
 }
-#features #features_all #feature_waterproof,
-#features #features_all #feature_comfort,
-#features #features_all #feature_lightweight,
-#features #features_all #feature_vegan {
+#features div #features_all #feature_waterproof,
+#features div #features_all #feature_comfort,
+#features div #features_all #feature_lightweight,
+#features div #features_all #feature_vegan {
   height: 100vh;
-  width: calc(70vw - 20px);
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   background-color: var(--color-white);
   z-index: 100;
 }
-#features #features_all #feature_waterproof .feature_container,
-#features #features_all #feature_comfort .feature_container,
-#features #features_all #feature_lightweight .feature_container,
-#features #features_all #feature_vegan .feature_container {
+#features div #features_all #feature_waterproof .feature_container,
+#features div #features_all #feature_comfort .feature_container,
+#features div #features_all #feature_lightweight .feature_container,
+#features div #features_all #feature_vegan .feature_container {
   display: flex;
   flex-direction: column;
   margin: auto 100px;
@@ -187,101 +345,102 @@ p {
   line-height: 2.5vw;
   z-index: 100;
 }
-#features #features_all #feature_waterproof .feature_container .feature_title,
-#features #features_all #feature_comfort .feature_container .feature_title,
-#features #features_all #feature_lightweight .feature_container .feature_title,
-#features #features_all #feature_vegan .feature_container .feature_title {
+#features div #features_all #feature_waterproof .feature_container .feature_title,
+#features div #features_all #feature_comfort .feature_container .feature_title,
+#features div #features_all #feature_lightweight .feature_container .feature_title,
+#features div #features_all #feature_vegan .feature_container .feature_title {
   display: flex;
   flex-direction: row;
   margin-bottom: 40px;
 }
-#features #features_all #feature_waterproof .feature_container .feature_title .feature_icon,
-#features #features_all #feature_comfort .feature_container .feature_title .feature_icon,
-#features #features_all #feature_lightweight .feature_container .feature_title .feature_icon,
-#features #features_all #feature_vegan .feature_container .feature_title .feature_icon {
+#features div #features_all #feature_waterproof .feature_container .feature_title .feature_icon,
+#features div #features_all #feature_comfort .feature_container .feature_title .feature_icon,
+#features div #features_all #feature_lightweight .feature_container .feature_title .feature_icon,
+#features div #features_all #feature_vegan .feature_container .feature_title .feature_icon {
   width: 60px;
   margin: 10px 0;
   color: var(--color-text_color);
 }
-#features #features_all #feature_waterproof .feature_container .feature_title h3,
-#features #features_all #feature_comfort .feature_container .feature_title h3,
-#features #features_all #feature_lightweight .feature_container .feature_title h3,
-#features #features_all #feature_vegan .feature_container .feature_title h3 {
+#features div #features_all #feature_waterproof .feature_container .feature_title h3,
+#features div #features_all #feature_comfort .feature_container .feature_title h3,
+#features div #features_all #feature_lightweight .feature_container .feature_title h3,
+#features div #features_all #feature_vegan .feature_container .feature_title h3 {
   font-size: 2.4vw;
   align-self: center;
   padding: 0 20px;
+  background-color: rgba(255, 255, 255, 0.5);
 }
-#features #features_all #feature_waterproof .feature_container h4,
-#features #features_all #feature_comfort .feature_container h4,
-#features #features_all #feature_lightweight .feature_container h4,
-#features #features_all #feature_vegan .feature_container h4 {
+#features div #features_all #feature_waterproof .feature_container h4,
+#features div #features_all #feature_comfort .feature_container h4,
+#features div #features_all #feature_lightweight .feature_container h4,
+#features div #features_all #feature_vegan .feature_container h4 {
   font-size: 2vw;
   line-height: normal;
   margin-bottom: 40px;
   width: fit-content;
   background-color: rgba(255, 255, 255, 0.5);
 }
-#features #features_all #feature_waterproof .feature_container p,
-#features #features_all #feature_comfort .feature_container p,
-#features #features_all #feature_lightweight .feature_container p,
-#features #features_all #feature_vegan .feature_container p {
+#features div #features_all #feature_waterproof .feature_container p,
+#features div #features_all #feature_comfort .feature_container p,
+#features div #features_all #feature_lightweight .feature_container p,
+#features div #features_all #feature_vegan .feature_container p {
   font-size: 1.6vw;
   line-height: 160%;
   width: fit-content;
   background-color: rgba(255, 255, 255, 0.5);
 }
-#features #features_all #feature_waterproof .feature_container .cloud_azure1,
-#features #features_all #feature_waterproof .feature_container .cloud_azure2,
-#features #features_all #feature_waterproof .feature_container .cloud_azure3,
-#features #features_all #feature_waterproof .feature_container .cloud_azure4,
-#features #features_all #feature_comfort .feature_container .cloud_azure1,
-#features #features_all #feature_comfort .feature_container .cloud_azure2,
-#features #features_all #feature_comfort .feature_container .cloud_azure3,
-#features #features_all #feature_comfort .feature_container .cloud_azure4,
-#features #features_all #feature_lightweight .feature_container .cloud_azure1,
-#features #features_all #feature_lightweight .feature_container .cloud_azure2,
-#features #features_all #feature_lightweight .feature_container .cloud_azure3,
-#features #features_all #feature_lightweight .feature_container .cloud_azure4,
-#features #features_all #feature_vegan .feature_container .cloud_azure1,
-#features #features_all #feature_vegan .feature_container .cloud_azure2,
-#features #features_all #feature_vegan .feature_container .cloud_azure3,
-#features #features_all #feature_vegan .feature_container .cloud_azure4 {
-  width: 150px;
+#features div #features_all #feature_waterproof .feature_container .cloud_azure1,
+#features div #features_all #feature_waterproof .feature_container .cloud_azure2,
+#features div #features_all #feature_waterproof .feature_container .cloud_azure3,
+#features div #features_all #feature_waterproof .feature_container .cloud_azure4,
+#features div #features_all #feature_comfort .feature_container .cloud_azure1,
+#features div #features_all #feature_comfort .feature_container .cloud_azure2,
+#features div #features_all #feature_comfort .feature_container .cloud_azure3,
+#features div #features_all #feature_comfort .feature_container .cloud_azure4,
+#features div #features_all #feature_lightweight .feature_container .cloud_azure1,
+#features div #features_all #feature_lightweight .feature_container .cloud_azure2,
+#features div #features_all #feature_lightweight .feature_container .cloud_azure3,
+#features div #features_all #feature_lightweight .feature_container .cloud_azure4,
+#features div #features_all #feature_vegan .feature_container .cloud_azure1,
+#features div #features_all #feature_vegan .feature_container .cloud_azure2,
+#features div #features_all #feature_vegan .feature_container .cloud_azure3,
+#features div #features_all #feature_vegan .feature_container .cloud_azure4 {
+  width: 14vw;
   position: absolute;
   z-index: -1;
 }
-#features #features_all #feature_waterproof .feature_container .cloud_azure1,
-#features #features_all #feature_comfort .feature_container .cloud_azure1,
-#features #features_all #feature_lightweight .feature_container .cloud_azure1,
-#features #features_all #feature_vegan .feature_container .cloud_azure1 {
-  top: -10;
-  left: -20px;
+#features div #features_all #feature_waterproof .feature_container .cloud_azure1,
+#features div #features_all #feature_comfort .feature_container .cloud_azure1,
+#features div #features_all #feature_lightweight .feature_container .cloud_azure1,
+#features div #features_all #feature_vegan .feature_container .cloud_azure1 {
+  top: -3vw;
+  left: -3vw;
 }
-#features #features_all #feature_waterproof .feature_container .cloud_azure2,
-#features #features_all #feature_comfort .feature_container .cloud_azure2,
-#features #features_all #feature_lightweight .feature_container .cloud_azure2,
-#features #features_all #feature_vegan .feature_container .cloud_azure2 {
-  top: -20px;
-  left: 40px;
+#features div #features_all #feature_waterproof .feature_container .cloud_azure2,
+#features div #features_all #feature_comfort .feature_container .cloud_azure2,
+#features div #features_all #feature_lightweight .feature_container .cloud_azure2,
+#features div #features_all #feature_vegan .feature_container .cloud_azure2 {
+  top: -5vw;
+  left: 3vw;
 }
-#features #features_all #feature_waterproof .feature_container .cloud_azure3,
-#features #features_all #feature_comfort .feature_container .cloud_azure3,
-#features #features_all #feature_lightweight .feature_container .cloud_azure3,
-#features #features_all #feature_vegan .feature_container .cloud_azure3 {
-  top: 20px;
-  left: 20px;
+#features div #features_all #feature_waterproof .feature_container .cloud_azure3,
+#features div #features_all #feature_comfort .feature_container .cloud_azure3,
+#features div #features_all #feature_lightweight .feature_container .cloud_azure3,
+#features div #features_all #feature_vegan .feature_container .cloud_azure3 {
+  top: 1vw;
+  left: 3vw;
 }
-#features #features_all #feature_waterproof .feature_container .cloud_azure4,
-#features #features_all #feature_comfort .feature_container .cloud_azure4,
-#features #features_all #feature_lightweight .feature_container .cloud_azure4,
-#features #features_all #feature_vegan .feature_container .cloud_azure4 {
-  top: -30px;
-  left: 30px;
+#features div #features_all #feature_waterproof .feature_container .cloud_azure4,
+#features div #features_all #feature_comfort .feature_container .cloud_azure4,
+#features div #features_all #feature_lightweight .feature_container .cloud_azure4,
+#features div #features_all #feature_vegan .feature_container .cloud_azure4 {
+  top: -3vw;
+  left: 3vw;
 }
-#features #features_all #feature_waterproof .feature_img,
-#features #features_all #feature_comfort .feature_img,
-#features #features_all #feature_lightweight .feature_img,
-#features #features_all #feature_vegan .feature_img {
+#features div #features_all #feature_waterproof .feature_img,
+#features div #features_all #feature_comfort .feature_img,
+#features div #features_all #feature_lightweight .feature_img,
+#features div #features_all #feature_vegan .feature_img {
   position: absolute;
   right: 20px;
   width: 30vw;
@@ -289,6 +448,66 @@ p {
   opacity: 0.6;
 }
 
+@media screen and (max-width: 768px) {
+  #features div #features_sidebar {
+    width: 140px;
+    margin-left: 30px;
+    background-color: transparent;
+  }
+  #features div #features_sidebar #features_sidebar_container h2 {
+    font-size: 20px;
+    background-color: transparent;
+  }
+  #features div #features_sidebar #features_sidebar_container p {
+    display: none;
+  }
+  #features div #features_all {
+    width: auto;
+  }
+  #features div #features_all #feature_waterproof,
+  #features div #features_all #feature_comfort,
+  #features div #features_all #feature_lightweight,
+  #features div #features_all #feature_vegan {
+    position: relative;
+    background-color: transparent;
+  }
+  #features div #features_all #feature_waterproof .feature_container,
+  #features div #features_all #feature_comfort .feature_container,
+  #features div #features_all #feature_lightweight .feature_container,
+  #features div #features_all #feature_vegan .feature_container {
+    margin: auto 20px auto 0;
+  }
+  #features div #features_all #feature_waterproof .feature_container .feature_title h3,
+  #features div #features_all #feature_comfort .feature_container .feature_title h3,
+  #features div #features_all #feature_lightweight .feature_container .feature_title h3,
+  #features div #features_all #feature_vegan .feature_container .feature_title h3 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  #features div #features_all #feature_waterproof .feature_container h4,
+  #features div #features_all #feature_comfort .feature_container h4,
+  #features div #features_all #feature_lightweight .feature_container h4,
+  #features div #features_all #feature_vegan .feature_container h4 {
+    font-size: 16px;
+  }
+  #features div #features_all #feature_waterproof .feature_container p,
+  #features div #features_all #feature_comfort .feature_container p,
+  #features div #features_all #feature_lightweight .feature_container p,
+  #features div #features_all #feature_vegan .feature_container p {
+    font-size: 12px;
+  }
+  #features div #features_all #feature_waterproof .feature_img,
+  #features div #features_all #feature_comfort .feature_img,
+  #features div #features_all #feature_lightweight .feature_img,
+  #features div #features_all #feature_vegan .feature_img {
+    position: absolute;
+    right: 0;
+    width: auto;
+    height: 100vh;
+    opacity: 0.5;
+    z-index: -1;
+  }
+}
 #products {
   width: 100vw;
   display: flex;
@@ -296,10 +515,10 @@ p {
   justify-content: center;
   background-image: url("../img/shoes on the beach_ex4.jpg");
   background-size: cover;
-  background-position: top;
+  background-position: top right;
   background-repeat: no-repeat;
   position: relative;
-  padding: 50px 80px;
+  padding: 50px 80px 0;
   z-index: 1;
 }
 #products::after {
@@ -309,7 +528,7 @@ p {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(50deg, rgb(255, 255, 255) 60%, rgba(255, 255, 255, 0.5) 80%);
+  background: linear-gradient(20deg, rgb(255, 255, 255) 65%, rgba(255, 255, 255, 0.5) 90%);
   z-index: 2;
 }
 #products h2,
@@ -366,10 +585,11 @@ p {
   justify-content: space-evenly;
   background-color: var(--color-white);
   border: none;
+  cursor: pointer;
 }
-#products .products_all .products_athletic dt div button span,
-#products .products_all .products_casual dt div button span,
-#products .products_all .products_allterrain dt div button span {
+#products .products_all .products_athletic dt div button .click-icon-products,
+#products .products_all .products_casual dt div button .click-icon-products,
+#products .products_all .products_allterrain dt div button .click-icon-products {
   background-image: url(/img/add-line.svg);
   background-position: center;
   background-size: 3vw;
@@ -377,10 +597,15 @@ p {
   height: 30px;
   color: var(--color-text_color);
 }
+#products .products_all .products_athletic dt div button .click-icon-products.show,
+#products .products_all .products_casual dt div button .click-icon-products.show,
+#products .products_all .products_allterrain dt div button .click-icon-products.show {
+  background-image: url(/img/subtract-line.svg);
+}
 #products .products_all .products_athletic .products_container,
 #products .products_all .products_casual .products_container,
 #products .products_all .products_allterrain .products_container {
-  display: flex;
+  display: none;
   flex-direction: row;
   justify-content: space-evenly;
   padding: 30px 0;
@@ -413,24 +638,32 @@ p {
   margin: 10px;
   line-height: 150%;
 }
-#products .products_all .products_athletic .products_container dd div button,
-#products .products_all .products_casual .products_container dd div button,
-#products .products_all .products_allterrain .products_container dd div button {
+#products .products_all .products_athletic .products_container dd .product_button,
+#products .products_all .products_casual .products_container dd .product_button,
+#products .products_all .products_allterrain .products_container dd .product_button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+}
+#products .products_all .products_athletic .products_container dd .product_button .products_link,
+#products .products_all .products_casual .products_container dd .product_button .products_link,
+#products .products_all .products_allterrain .products_container dd .product_button .products_link {
+  text-decoration: none;
+}
+#products .products_all .products_athletic .products_container dd .product_button .products_link button,
+#products .products_all .products_casual .products_container dd .product_button .products_link button,
+#products .products_all .products_allterrain .products_container dd .product_button .products_link button {
   width: 8vw;
   height: 3vw;
   margin: 10px 10px 20px;
   border-color: var(--color-midnight_green);
   border: 1px solid;
 }
-#products .products_all .products_athletic .products_container dd div button:hover,
-#products .products_all .products_casual .products_container dd div button:hover,
-#products .products_all .products_allterrain .products_container dd div button:hover {
+#products .products_all .products_athletic .products_container dd .product_button .products_link button:hover,
+#products .products_all .products_casual .products_container dd .product_button .products_link button:hover,
+#products .products_all .products_allterrain .products_container dd .product_button .products_link button:hover {
   background-color: var(--color-white);
-}
-#products .products_all .products_athletic .products_container dd div button a,
-#products .products_all .products_casual .products_container dd div button a,
-#products .products_all .products_allterrain .products_container dd div button a {
-  text-decoration: none;
 }
 
 .products_athletic {
@@ -447,4 +680,480 @@ p {
 
 .products_allterrain {
   background-color: var(--color-papaya_whip);
+}
+
+@media screen and (max-width: 768px) {
+  #products {
+    padding: 30px 40px 20px;
+    background-size: 100%;
+  }
+  #products h2 {
+    font-size: 20px;
+    margin-left: 0;
+    padding-left: 0;
+  }
+  #products p {
+    font-size: 12px;
+  }
+  #products .products_all .products_athletic dt,
+  #products .products_all .products_casual dt,
+  #products .products_all .products_allterrain dt {
+    display: flex;
+    flex-direction: column;
+  }
+  #products .products_all .products_athletic dt p,
+  #products .products_all .products_casual dt p,
+  #products .products_all .products_allterrain dt p {
+    margin: 10px;
+    font-size: 10px;
+  }
+  #products .products_all .products_athletic dt div,
+  #products .products_all .products_casual dt div,
+  #products .products_all .products_allterrain dt div {
+    margin: auto;
+    width: 30vw;
+    height: 30px;
+    background-color: var(--color-white);
+  }
+  #products .products_all .products_athletic dt div button,
+  #products .products_all .products_casual dt div button,
+  #products .products_all .products_allterrain dt div button {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 30vw;
+    height: 30px;
+    translate: 0;
+    font-size: 10px;
+  }
+  #products .products_all .products_athletic dt div button span,
+  #products .products_all .products_casual dt div button span,
+  #products .products_all .products_allterrain dt div button span {
+    width: 18px;
+    height: 18px;
+  }
+  #products .products_all .products_athletic .products_container,
+  #products .products_all .products_casual .products_container,
+  #products .products_all .products_allterrain .products_container {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+  }
+  #products .products_all .products_athletic .products_container dd,
+  #products .products_all .products_casual .products_container dd,
+  #products .products_all .products_allterrain .products_container dd {
+    width: 90%;
+    margin: 10px 0;
+  }
+  #products .products_all .products_athletic .products_container dd .product_item,
+  #products .products_all .products_casual .products_container dd .product_item,
+  #products .products_all .products_allterrain .products_container dd .product_item {
+    display: flex;
+    flex-direction: row;
+  }
+  #products .products_all .products_athletic .products_container dd .product_item img,
+  #products .products_all .products_casual .products_container dd .product_item img,
+  #products .products_all .products_allterrain .products_container dd .product_item img {
+    width: 50%;
+  }
+  #products .products_all .products_athletic .products_container dd .product_item div,
+  #products .products_all .products_casual .products_container dd .product_item div,
+  #products .products_all .products_allterrain .products_container dd .product_item div {
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px 5px;
+  }
+  #products .products_all .products_athletic .products_container dd .product_item div h4,
+  #products .products_all .products_casual .products_container dd .product_item div h4,
+  #products .products_all .products_allterrain .products_container dd .product_item div h4 {
+    font-size: 12px;
+  }
+  #products .products_all .products_athletic .products_container dd .product_item div p,
+  #products .products_all .products_casual .products_container dd .product_item div p,
+  #products .products_all .products_allterrain .products_container dd .product_item div p {
+    font-size: 9px;
+    margin: 5px;
+  }
+  #products .products_all .products_athletic .products_container dd .product_button,
+  #products .products_all .products_casual .products_container dd .product_button,
+  #products .products_all .products_allterrain .products_container dd .product_button {
+    padding: 20px 20px 10px;
+  }
+  #products .products_all .products_athletic .products_container dd .product_button .products_link button,
+  #products .products_all .products_casual .products_container dd .product_button .products_link button,
+  #products .products_all .products_allterrain .products_container dd .product_button .products_link button {
+    width: 25vw;
+    height: 30px;
+  }
+}
+#shipping {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  padding: 50px 80px;
+}
+#shipping h2 {
+  font-size: 1.8vw;
+  padding-left: 5vw;
+}
+#shipping ul {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 100px;
+}
+#shipping ul li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#shipping ul li img {
+  width: 60px;
+  height: 60px;
+  margin: 30px;
+}
+#shipping ul li h3 {
+  font-size: 1.6vw;
+}
+#shipping ul li p {
+  font-size: 1.4vw;
+}
+
+@media screen and (max-width: 768px) {
+  #shipping {
+    padding: 30px 40px 0px;
+  }
+  #shipping h2 {
+    font-size: 20px;
+  }
+  #shipping ul {
+    padding: 30px 20px;
+  }
+  #shipping ul li h3 {
+    font-size: 12px;
+  }
+  #shipping ul li p {
+    font-size: 10px;
+  }
+}
+#review {
+  background-color: var(--color-light_cyan);
+  display: flex;
+  flex-direction: column;
+  padding: 50px 80px;
+}
+#review h2 {
+  font-size: 1.8vw;
+  padding-left: 5vw;
+  z-index: 2;
+}
+#review ul {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  list-style-type: none;
+  padding: 30px 0;
+  z-index: 2;
+}
+#review ul li {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+#review ul li:nth-child(odd) {
+  margin-left: 50%;
+}
+#review ul li .review-reviewer {
+  font-size: 1vw;
+  color: var(--color-text_color);
+}
+#review ul li h3 {
+  font-size: 1.5vw;
+}
+#review ul li .review-comment {
+  font-size: 1.2vw;
+  color: var(--color-text_color);
+  padding: 5px 0;
+  border-top: var(--color-midnight_green) 1px solid;
+}
+#review ul .cloud_white1,
+#review ul .cloud_white2,
+#review ul .cloud_white3,
+#review ul .cloud_white4 {
+  position: absolute;
+  width: 35vw;
+  z-index: -1;
+}
+#review ul .cloud_white1 {
+  top: -5vw;
+  left: 40vw;
+}
+#review ul .cloud_white2 {
+  top: 10vw;
+  left: -5vw;
+}
+#review ul .cloud_white3 {
+  top: 25vw;
+  left: 50vw;
+}
+#review ul .cloud_white4 {
+  top: 40vw;
+  left: 5vw;
+}
+#review .review-more {
+  z-index: 2;
+  margin-right: 0;
+  margin-left: auto;
+  position: relative;
+}
+#review .review-more a {
+  display: block;
+  width: 20vw;
+  height: auto;
+}
+#review .review-more a img {
+  width: 100%;
+  height: auto;
+}
+#review .review-more a span {
+  position: absolute;
+  display: block;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-45%, -65%);
+  font-size: 1.1vw;
+  color: var(--color-white);
+}
+
+@media screen and (max-width: 768px) {
+  #review {
+    padding: 30px 40px 0px;
+  }
+  #review h2 {
+    font-size: 20px;
+  }
+  #review ul {
+    padding: 30px 0 0;
+  }
+  #review ul li {
+    width: 100%;
+    margin: 0 0 20px;
+  }
+  #review ul li:nth-child(odd) {
+    margin-left: 0;
+  }
+  #review ul li .review-reviewer {
+    font-size: 8px;
+  }
+  #review ul li h3 {
+    font-size: 12px;
+  }
+  #review ul li .review-comment {
+    font-size: 10px;
+  }
+  #review ul .cloud_white1 {
+    top: 5%;
+    left: 50vw;
+  }
+  #review ul .cloud_white2 {
+    top: 30%;
+    left: 0;
+  }
+  #review ul .cloud_white3 {
+    top: 50%;
+    left: 45vw;
+  }
+  #review ul .cloud_white4 {
+    top: 75%;
+    left: 10vw;
+  }
+  #review .review-more {
+    margin: 0 auto 20px;
+  }
+  #review .review-more a {
+    width: 30vw;
+  }
+  #review .review-more a span {
+    font-size: 10px;
+  }
+}
+#exchange {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  padding: 50px 80px 10px;
+}
+#exchange h2 {
+  font-size: 1.8vw;
+  padding-left: 5vw;
+}
+#exchange ul {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 100px;
+}
+#exchange ul li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 20px 0;
+}
+#exchange ul li img {
+  width: 80px;
+  height: auto;
+  margin: 30px;
+}
+#exchange ul li div {
+  display: flex;
+  flex-direction: column;
+}
+#exchange ul li div p {
+  font-size: 1.2vw;
+  padding: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  #exchange {
+    padding: 30px 40px 0px;
+  }
+  #exchange h2 {
+    font-size: 20px;
+  }
+  #exchange ul {
+    padding: 30px 0 0;
+  }
+  #exchange ul li div h3 {
+    font-size: 12px;
+  }
+  #exchange ul li div p {
+    font-size: 10px;
+    padding-left: 0;
+  }
+}
+#faq {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-azure);
+  padding: 50px 80px 20px;
+}
+#faq h2 {
+  font-size: 1.8vw;
+  padding-left: 5vw;
+}
+#faq dl {
+  padding: 30px 100px;
+}
+#faq dl .question-btn {
+  display: flex;
+  width: 100%;
+  height: 50px;
+}
+#faq dl .question-btn button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+  font-size: 2vw;
+  color: var(--color-white);
+  background-color: var(--color-midnight_green);
+  border: 1px solid var(--color-white);
+}
+#faq dl .question-btn button .click-icon-faq {
+  width: 4vw;
+  height: 4vw;
+  margin: 0 0 0 auto;
+  background-image: url(/img/add-line-w.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#faq dl .question-btn button .click-icon-faq.show {
+  background-image: url(/img/subtract-line-w.svg);
+}
+#faq dl .answer {
+  display: none;
+}
+#faq dl .answer.show {
+  display: block;
+  width: 100%;
+  background-color: var(--color-white);
+  font-size: 1.2vw;
+  padding: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  #faq {
+    padding: 30px 40px 30px;
+  }
+  #faq h2 {
+    font-size: 20px;
+  }
+  #faq dl {
+    padding: 10px 0 0;
+  }
+  #faq dl dt button {
+    font-size: 12px;
+  }
+  #faq dl dd {
+    font-size: 10px;
+  }
+}
+footer {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-midnight_green);
+  padding: 20px 80px;
+  text-align: center;
+}
+footer img {
+  width: 50%;
+}
+footer p {
+  color: var(--color-white);
+  font-size: 2vw;
+}
+footer button {
+  width: 30vw;
+  height: 4vw;
+  margin: 30px;
+  font-size: 1.5vw;
+  color: var(--color-midnight_green);
+  background-color: var(--color-white);
+  border: none;
+  cursor: pointer;
+}
+footer div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 40%;
+  margin-bottom: 15px;
+}
+footer div img {
+  width: 24px;
+  height: 24px;
+}
+footer small {
+  color: var(--color-white);
+}
+
+@media screen and (max-width: 768px) {
+  footer p {
+    font-size: 12px;
+  }
+  footer button {
+    font-size: 16px;
+    height: 30px;
+  }
+  footer div {
+    width: 50%;
+  }
+  footer small {
+    font-size: 10px;
+  }
 }/*# sourceMappingURL=style.css.map */

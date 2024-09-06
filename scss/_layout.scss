@@ -1,4 +1,10 @@
-#mv {
+@use "./variables" as *;
+@use "./mixins" as *;
+
+
+// PC版MV部分
+
+#pc_mv {
     position: relative;
     // width: 100%;
     height: 100vh;
@@ -29,7 +35,9 @@
     }
 }
 
-#header {
+// PC版ナビ部分
+
+#pc_nav {
     width: 100%;
     height: 65px;
     padding: 0 20px;
@@ -84,7 +92,6 @@
         background-color: var(--color-midnight_green);
         border: none;
         cursor: pointer;
-
     }
 
     span {
@@ -93,173 +100,444 @@
 
 }
 
-#features {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: normal;
-    background-color: var(--color-white);
+// SP版ヘッダー,ナビゲーション部分
 
-    #features_sidebar {
-        width: 20vw;
-        padding: 50px 10px;
-        margin-left: 10vw;
-        background-color: var(--color-azure);
-        z-index: 200;
+#sp_header {
+    display: none;
+}
 
-        #features_sidebar_container {
-            width: 18vw;
-            position: sticky;
-            top: 105px;
-            display: flex;
-            flex-direction: column;
+// SP版MV部分のメディアクエリー
 
-            h2 {
-                font-size: 2vw;
-                margin: 0 auto;
-            }
+@include mq(medium) {
 
-            ul {
-                height: 50vh;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                list-style-type: none;
-                font-size: 1.2vw;
-                line-height: 2.5vw;
-                margin: 100px auto;
-
-                li a {
-                    width: 14vw;
-                    text-decoration: none;
-                    color: var(--color-text_color);
-                    display: flex;
-                    justify-content: space-between;
-                    text-align: center;
-
-                    img {
-                        width: 50px;
-                    }
-
-                    p {
-                        width: 50%;
-                        font-size: 1vw;
-                        line-height: 120%;
-                        margin: auto auto auto 20px;
-
-                    }
-                }
-            }
-
-        }
+    #pc_mv,
+    .pc_nav {
+        display: none;
     }
 
-    #features_all {
+    #sp_header {
         display: flex;
         flex-direction: column;
-        width: calc(100vw - 30vw - 20px);
+        position: relative;
 
-        #feature_waterproof,
-        #feature_comfort,
-        #feature_lightweight,
-        #feature_vegan {
-            height: 100vh;
-            width: calc(100vw - 30vw - 20px);
+        #sp_top {
+            width: 100%;
+            height: 65px;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            position: fixed;
+            top: 0px;
             background-color: var(--color-white);
-            z-index: 100;
+            z-index: 400;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 
-            .feature_container {
+            img {
+                width: 140px;
+                translate: 0 5px;
+            }
+
+            .shop-btn {
+                width: 35%;
+                height: 36px;
+                color: var(--color-white);
+                background-color: var(--color-midnight_green);
+                border: none;
+                cursor: pointer;
+            }
+
+            #hamburger-btn {
                 display: flex;
-                flex-direction: column;
-                margin: auto 100px;
-                position: relative;
-                font-size: 0.9vw;
-                line-height: 2.5vw;
-                z-index: 100;
+                justify-content: center;
+                align-items: center;
+                width: 50px;
+                height: 50px;
+                background-color: transparent;
+                cursor: pointer;
 
-                .feature_title {
+                span {
                     display: flex;
-                    flex-direction: row;
-                    margin-bottom: 40px;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    margin: auto;
+                    width: 35px;
+                    height: 1px;
+                    background-color: var(--color-text_color);
+                    transform-origin: center;
 
-                    .feature_icon {
-                        width: 60px;
-                        margin: 10px 0;
-                        color: var(--color-text_color);
+
+                    &::before {
+                        content: "";
+                        display: block;
+                        width: 35px;
+                        height: 1px;
+                        background-color: var(--color-text_color);
+                        transform: translateY(-12px);
+                        transition: transform 0.8s ease-in-out;
                     }
 
-                    h3 {
-                        font-size: 2.4vw;
-                        align-self: center;
-                        padding: 0 20px;
+                    &::after {
+                        content: "";
+                        display: block;
+                        width: 35px;
+                        height: 1px;
+                        background-color: var(--color-text_color);
+                        transform: translateY(11px);
+                        transition: transform 0.8s ease-in-out;
                     }
-                }
-
-                h4 {
-                    font-size: 2vw;
-                    line-height: normal;
-                    margin-bottom: 40px;
-                    width: fit-content;
-                    background-color: rgba(255, 255, 255, 0.5);
-
-                }
-
-                p {
-                    font-size: 1.6vw;
-                    line-height: 160%;
-                    width: fit-content;
-                    background-color: rgba(255, 255, 255, 0.5);
-                }
-
-                .cloud_azure1,
-                .cloud_azure2,
-                .cloud_azure3,
-                .cloud_azure4 {
-                    width: 150px;
-                    position: absolute;
-                    z-index: -1;
-                }
-
-                .cloud_azure1 {
-                    top: -10;
-                    left: -20px;
-                }
-
-                .cloud_azure2 {
-                    top: -20px;
-                    left: 40px;
-                }
-
-                .cloud_azure3 {
-                    top: 20px;
-                    left: 20px;
-                }
-
-                .cloud_azure4 {
-                    top: -30px;
-                    left: 30px;
                 }
             }
 
-            .feature_img {
-                position: absolute;
-                right: 20px;
-                width: 30vw;
-                z-index: 0;
-                opacity: 0.6;
+            // ハンバーガーメニュークリック時のボタンアニメーション
 
+            #hamburger-btn.change {
+                transition: all 0.8s ease;
+
+                span {
+                    width: 0;
+
+                    &::before {
+                        transform: rotate(45deg);
+
+                    }
+
+                    &::after {
+                        transform: rotate(-45deg);
+
+                    }
+                }
+            }
+
+        }
+
+        #sp_mv {
+            width: 100%;
+            height: calc(100vh - 65px);
+            background-image: url(../img/shoes_in_water_ex.png);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            // padding-top:65px;
+
+            .mv-text1 {
+                margin: 30px 20px 40px auto;
+            }
+
+            .mv-text2 {
+                margin: 20px auto auto 30px;
+            }
+
+            .logo {
+                width: 80%;
+                margin: auto auto 20px;
             }
         }
 
+        #sp_nav {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: calc(100vh - 65px);
+            background-color: var(--color-midnight_green);
+            color: var(--color-white);
+            position: fixed;
+            top: 65px;
+            z-index: 300;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
 
+            .nav_list {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                list-style-type: none;
+                line-height: 3vw;
+                margin: 80px auto 40px;
 
+                li {
+                    margin: 30px 0;
+
+                    a {
+                        font-size: 20px;
+                        text-decoration: none;
+                        color: var(--color-white);
+                    }
+                }
+            }
+
+            .sns_list {
+                display: flex;
+                flex-direction: row;
+                list-style-type: none;
+                margin: 20px auto;
+
+                img {
+                    width: 40px;
+                    height: 40px;
+                    margin: 0 10px;
+                }
+            }
+        }
+
+        // ハンバーガーメニュークリック時のメニューアニメーション
+        #sp_nav.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
     }
 }
 
+#features {
+    width: 100%;
+    background-color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+
+    div {
+        display: flex;
+
+        #features_sidebar {
+            width: 200px;
+            height: 100vh;
+            padding: 50px 10px;
+            margin-left: 10vw;
+            background-color: var(--color-azure);
+            z-index: 200;
+            position: sticky;
+            top: 65px;
+
+            #features_sidebar_container {
+                width: 180px;
+                display: flex;
+                flex-direction: column;
+
+                h2 {
+                    text-align: center;
+                    padding: 20px 0;
+                    z-index: 200;
+                    font-size: 2vw;
+                }
+
+                ul {
+                    height: 50vh;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    list-style-type: none;
+                    font-size: 1.2vw;
+                    line-height: 2.5vw;
+                    margin: 100px auto;
+
+                    li a {
+                        width: 14vw;
+                        text-decoration: none;
+                        color: var(--color-text_color);
+                        display: flex;
+                        justify-content: space-between;
+                        text-align: center;
+
+                        img {
+                            width: 50px;
+                        }
+
+                        p {
+                            width: 50%;
+                            font-size: 1vw;
+                            line-height: 120%;
+                            margin: auto auto auto 20px;
+
+                        }
+                    }
+                }
+
+            }
+        }
+
+        #features_all {
+            width: 75vw;
+            display: flex;
+            flex-direction: column;
+
+            #feature_waterproof,
+            #feature_comfort,
+            #feature_lightweight,
+            #feature_vegan {
+                height: 100vh;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                background-color: var(--color-white);
+                z-index: 100;
+
+                .feature_container {
+                    display: flex;
+                    flex-direction: column;
+                    margin: auto 100px;
+                    position: relative;
+                    font-size: 0.9vw;
+                    line-height: 2.5vw;
+                    z-index: 100;
+
+                    .feature_title {
+                        display: flex;
+                        flex-direction: row;
+                        margin-bottom: 40px;
+
+                        .feature_icon {
+                            width: 60px;
+                            margin: 10px 0;
+                            color: var(--color-text_color);
+                        }
+
+                        h3 {
+                            font-size: 2.4vw;
+                            align-self: center;
+                            padding: 0 20px;
+                            background-color: rgba(255, 255, 255, 0.5);
+                        }
+                    }
+
+                    h4 {
+                        font-size: 2vw;
+                        line-height: normal;
+                        margin-bottom: 40px;
+                        width: fit-content;
+                        background-color: rgba(255, 255, 255, 0.5);
+
+                    }
+
+                    p {
+                        font-size: 1.6vw;
+                        line-height: 160%;
+                        width: fit-content;
+                        background-color: rgba(255, 255, 255, 0.5);
+                    }
+
+                    .cloud_azure1,
+                    .cloud_azure2,
+                    .cloud_azure3,
+                    .cloud_azure4 {
+                        width: 14vw;
+                        position: absolute;
+                        z-index: -1;
+                    }
+
+                    .cloud_azure1 {
+                        top: -3vw;
+                        left: -3vw;
+                    }
+
+                    .cloud_azure2 {
+                        top: -5vw;
+                        left: 3vw;
+                    }
+
+                    .cloud_azure3 {
+                        top: 1vw;
+                        left: 3vw;
+                    }
+
+                    .cloud_azure4 {
+                        top: -3vw;
+                        left: 3vw;
+                    }
+                }
+
+                .feature_img {
+                    position: absolute;
+                    right: 20px;
+                    width: 30vw;
+                    z-index: 0;
+                    opacity: 0.6;
+
+                }
+            }
+
+
+
+        }
+    }
+
+
+
+}
+
+// features部分のメディアクエリー
+
+@include mq(medium) {
+    #features {
+
+        div {
+            #features_sidebar {
+                width: 140px;
+                margin-left: 30px;
+                background-color: transparent;
+
+                #features_sidebar_container {
+
+                    h2 {
+                        font-size: 20px;
+                        background-color: transparent;
+                    }
+
+                    p {
+                        display: none;
+                    }
+                }
+            }
+
+            #features_all {
+                width: auto;
+
+                #feature_waterproof,
+                #feature_comfort,
+                #feature_lightweight,
+                #feature_vegan {
+                    position: relative;
+                    background-color: transparent;
+
+                    .feature_container {
+                        margin: auto 20px auto 0;
+
+                        .feature_title {
+
+                            h3 {
+                                font-size: 20px;
+                                line-height: 24px;
+
+                            }
+                        }
+
+                        h4 {
+                            font-size: 16px;
+                        }
+
+                        p {
+                            font-size: 12px;
+                        }
+                    }
+
+                    .feature_img {
+                        position: absolute;
+                        right: 0;
+                        width: auto;
+                        height: 100vh;
+                        opacity: 0.5;
+                        z-index: -1;
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+// products部分
 #products {
     width: 100vw;
     display: flex;
@@ -267,10 +545,10 @@
     justify-content: center;
     background-image: url("../img/shoes\ on\ the\ beach_ex4.jpg");
     background-size: cover;
-    background-position: top;
+    background-position: top right;
     background-repeat: no-repeat;
     position: relative;
-    padding: 50px 80px;
+    padding: 50px 80px 0;
     z-index: 1;
 
     &::after {
@@ -280,7 +558,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(50deg, rgba(255, 255, 255, 1) 60%, rgba(255, 255, 255, 0.5) 80%);
+        background: linear-gradient(20deg, rgba(255, 255, 255, 1) 65%, rgba(255, 255, 255, 0.5) 90%);
         z-index: 2;
     }
 
@@ -337,8 +615,9 @@
                         justify-content: space-evenly;
                         background-color: var(--color-white);
                         border: none;
+                        cursor: pointer;
 
-                        span {
+                        .click-icon-products {
                             background-image: url(/img/add-line.svg);
                             background-position: center;
                             background-size: 3vw;
@@ -347,12 +626,16 @@
                             color: var(--color-text_color);
                         }
 
+                        .click-icon-products.show {
+                            background-image: url(/img/subtract-line.svg);
+                        }
+
                     }
                 }
             }
 
             .products_container {
-                display: flex;
+                display: none;
                 flex-direction: row;
                 justify-content: space-evenly;
                 padding: 30px 0;
@@ -380,20 +663,27 @@
                         line-height: 150%;
                     }
 
-                    div {
-                        button {
-                            width: 8vw;
-                            height: 3vw;
-                            margin: 10px 10px 20px;
-                            border-color: var(--color-midnight_green);
-                            border: 1px solid;
+                    .product_button {
+                        display: flex;
+                        justify-content: center;
+                        width: 100%;
+                        padding: 20px;
+
+                        .products_link {
+                            text-decoration: none;
+
+                            button {
+                                width: 8vw;
+                                height: 3vw;
+                                margin: 10px 10px 20px;
+                                border-color: var(--color-midnight_green);
+                                border: 1px solid;
 
                                 &:hover {
                                     background-color: var(--color-white);
-                                }                            
+                                }
 
-                            a {
-                                text-decoration: none;
+
                             }
                         }
                     }
@@ -404,11 +694,6 @@
     }
 
 }
-
-
-
-
-
 
 .products_athletic {
     background-color: var(--color-midnight_green);
@@ -428,4 +713,611 @@
 
 .products_allterrain {
     background-color: var(--color-papaya_whip);
+}
+
+// Products部分のメディアクエリー
+@include mq(medium) {
+
+    #products {
+        padding: 30px 40px 20px;
+        background-size: 100%;
+
+
+        h2 {
+            font-size: 20px;
+            margin-left: 0;
+            padding-left: 0;
+        }
+
+        p {
+            font-size: 12px;
+        }
+
+        .products_all {
+
+            .products_athletic,
+            .products_casual,
+            .products_allterrain {
+                dt {
+                    display: flex;
+                    flex-direction: column;
+
+                    p {
+                        margin: 10px;
+                        font-size: 10px;
+                    }
+
+                    div {
+                        margin: auto;
+                        width: 30vw;
+                        height: 30px;
+                        background-color: var(--color-white);
+
+                        button {
+                            position: relative;
+                            top: 0;
+                            right: 0;
+                            width: 30vw;
+                            height: 30px;
+                            translate: 0;
+                            font-size: 10px;
+
+                            span {
+                                width: 18px;
+                                height: 18px;
+                            }
+                        }
+                    }
+
+                }
+
+                .products_container {
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 10px 0;
+
+                    dd {
+                        width: 90%;
+                        margin: 10px 0;
+
+                        .product_item {
+                            display: flex;
+                            flex-direction: row;
+
+                            img {
+                                width: 50%;
+                            }
+
+                            div {
+                                flex-direction: column;
+                                justify-content: space-around;
+                                padding: 10px 5px;
+
+                                h4 {
+                                    font-size: 12px;
+                                }
+
+                                p {
+                                    font-size: 9px;
+                                    margin: 5px;
+                                }
+                            }
+
+
+
+
+
+                        }
+
+                        .product_button {
+                            padding: 20px 20px 10px;
+
+                            .products_link {
+
+                                button {
+                                    width: 25vw;
+                                    height: 30px;
+                                }
+                            }
+                        }
+                    }
+
+
+                }
+            }
+
+
+
+        }
+    }
+}
+
+
+#shipping {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-white);
+    padding: 50px 80px;
+
+    h2 {
+        font-size: 1.8vw;
+        padding-left: 5vw;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        padding: 30px 100px;
+
+        li {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            img {
+                width: 60px;
+                height: 60px;
+                margin: 30px;
+            }
+
+            h3 {
+                font-size: 1.6vw;
+            }
+
+            p {
+                font-size: 1.4vw;
+            }
+
+        }
+    }
+}
+
+// shippingのメディアクエリー
+
+@include mq(medium) {
+
+    #shipping {
+        padding: 30px 40px 0px;
+
+        h2 {
+            font-size: 20px;
+        }
+
+        ul {
+            padding: 30px 20px;
+
+            li {
+
+                h3 {
+                    font-size: 12px;
+                }
+
+                p {
+                    font-size: 10px;
+                }
+            }
+
+
+        }
+    }
+
+}
+
+
+
+#review {
+    background-color: var(--color-light_cyan);
+    display: flex;
+    flex-direction: column;
+    padding: 50px 80px;
+
+
+    h2 {
+        font-size: 1.8vw;
+        padding-left: 5vw;
+        z-index: 2;
+
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        list-style-type: none;
+        padding: 30px 0;
+        z-index: 2;
+
+        li {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+
+            &:nth-child(odd) {
+                margin-left: 50%;
+            }
+
+            .review-reviewer {
+                font-size: 1vw;
+                color: var(--color-text_color);
+            }
+
+            h3 {
+                font-size: 1.5vw;
+            }
+
+            .review-comment {
+                font-size: 1.2vw;
+                color: var(--color-text_color);
+                padding: 5px 0;
+                border-top: var(--color-midnight_green) 1px solid;
+            }
+        }
+
+        .cloud_white1,
+        .cloud_white2,
+        .cloud_white3,
+        .cloud_white4 {
+            position: absolute;
+            width: 35vw;
+            z-index: -1;
+        }
+
+        .cloud_white1 {
+            top: -5vw;
+            left: 40vw;
+        }
+
+        .cloud_white2 {
+            top: 10vw;
+            left: -5vw;
+        }
+
+        .cloud_white3 {
+            top: 25vw;
+            left: 50vw;
+        }
+
+        .cloud_white4 {
+            top: 40vw;
+            left: 5vw;
+        }
+    }
+
+    .review-more {
+        z-index: 2;
+        margin-right: 0;
+        margin-left: auto;
+        position: relative;
+
+        a {
+            display: block;
+            width: 20vw;
+            height: auto;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+
+            span {
+                position: absolute;
+                display: block;
+                width: 100%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-45%, -65%);
+                font-size: 1.1vw;
+                color: var(--color-white);
+
+            }
+        }
+    }
+}
+
+
+// reviewのメディアクエリー
+
+@include mq(medium) {
+
+    #review {
+        padding: 30px 40px 0px;
+
+        h2 {
+            font-size: 20px;
+        }
+
+        ul {
+            padding: 30px 0 0;
+
+            li {
+                width: 100%;
+                margin: 0 0 20px;
+
+                &:nth-child(odd) {
+                    margin-left: 0;
+                }
+
+                .review-reviewer {
+                    font-size: 8px;
+                }
+
+                h3 {
+                    font-size: 12px;
+                }
+
+                .review-comment {
+                    font-size: 10px;
+                }
+            }
+
+            .cloud_white1 {
+                top: 5%;
+                left: 50vw;
+            }
+
+            .cloud_white2 {
+                top: 30%;
+                left: 0;
+            }
+
+            .cloud_white3 {
+                top: 50%;
+                left: 45vw;
+            }
+
+            .cloud_white4 {
+                top: 75%;
+                left: 10vw;
+            }
+        }
+
+        .review-more {
+            margin: 0 auto 20px;
+
+            a {
+                width: 30vw;
+
+                span {
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+
+}
+
+#exchange {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-white);
+    padding: 50px 80px 10px;
+
+    h2 {
+        font-size: 1.8vw;
+        padding-left: 5vw;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        padding: 30px 100px;
+
+        li {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin: 20px 0;
+
+            img {
+                width: 80px;
+                height: auto;
+                margin: 30px;
+            }
+
+            div {
+                display: flex;
+                flex-direction: column;
+
+                p {
+                    font-size: 1.2vw;
+                    padding: 20px;
+                }
+            }
+
+        }
+    }
+
+
+}
+
+// exchangeのメディアクエリー
+
+@include mq(medium) {
+    #exchange {
+        padding: 30px 40px 0px;
+
+        h2 {
+            font-size: 20px;
+        }
+
+        ul {
+            padding: 30px 0 0;
+
+            li {
+                div {
+                    h3 {
+                        font-size: 12px;
+                    }
+
+                    p {
+                        font-size: 10px;
+                        padding-left: 0;
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+
+#faq {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-azure);
+    padding: 50px 80px 20px;
+
+    h2 {
+        font-size: 1.8vw;
+        padding-left: 5vw;
+    }
+
+    dl {
+        padding: 30px 100px;
+
+        .question-btn {
+            display: flex;
+            width: 100%;
+            height: 50px;
+
+            button {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding: 0 20px;
+                width: 100%;
+                font-size: 2vw;
+                color: var(--color-white);
+                background-color: var(--color-midnight_green);
+                border: 1px solid var(--color-white);
+
+                .click-icon-faq {
+                    width: 4vw;
+                    height: 4vw;
+                    margin: 0 0 0 auto;
+                    background-image: url(/img/add-line-w.svg);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+
+                .click-icon-faq.show {
+                    background-image: url(/img/subtract-line-w.svg);
+                }
+            }
+
+        }
+
+        .answer {
+            display: none;
+        }
+
+        .answer.show {
+            display: block;
+            width: 100%;
+            background-color: var(--color-white);
+            font-size: 1.2vw;
+            padding: 20px;            
+        }
+    }
+}
+
+// faqのメディアクエリー
+
+@include mq(medium) {
+    #faq {
+        padding: 30px 40px 30px;
+
+        h2 {
+            font-size: 20px;
+        }
+
+        dl {
+            padding: 10px 0 0;
+
+            dt {
+                button {
+                    font-size: 12px;
+                }
+            }
+
+            dd {
+                font-size: 10px;
+            }
+
+        }
+    }
+}
+
+
+footer {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-midnight_green);
+    padding: 20px 80px;
+    text-align: center;
+
+    img {
+        width: 50%;
+    }
+
+    p {
+        color: var(--color-white);
+        font-size: 2vw;
+    }
+
+    button {
+        width: 30vw;
+        height: 4vw;
+        margin: 30px;
+        font-size: 1.5vw;
+        color: var(--color-midnight_green);
+        background-color: var(--color-white);
+        border: none;
+        cursor: pointer;
+    }
+
+    div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 40%;
+        margin-bottom: 15px;
+
+        img {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    small {
+        color: var(--color-white);
+    }
+}
+
+// footerのメディアクエリー
+
+@include mq(medium) {
+    footer {
+        p {
+            font-size: 12px;
+        }
+
+        button {
+            font-size: 16px;
+            height: 30px;
+        }
+
+        div{
+            width:50%;
+        }
+
+        small {
+            font-size: 10px;
+        }
+    }
 }
