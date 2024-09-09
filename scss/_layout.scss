@@ -330,7 +330,7 @@
                     list-style-type: none;
                     font-size: 1.2vw;
                     line-height: 2.5vw;
-                    margin: 100px auto;
+                    margin: 30px auto auto;
 
                     .feature_link {
                         width: 14vw;
@@ -929,7 +929,7 @@
 
 }
 
-
+// カスタマーレビュー
 
 #review {
     background-color: var(--color-light_cyan);
@@ -1240,14 +1240,14 @@
                 align-items: center;
                 padding: 0 20px;
                 width: 100%;
-                font-size: 1.4vw;
+                font-size: 1.2vw;
                 color: var(--color-white);
                 background-color: var(--color-midnight_green);
                 border: 1px solid var(--color-white);
 
                 .click-icon-faq {
-                    width: 4vw;
-                    height: 4vw;
+                    width: 3vw;
+                    height: 3vw;
                     margin: 0 0 0 auto;
                     background-image: url(/img/add-line-w.svg);
                     background-position: center;
@@ -1264,7 +1264,7 @@
         .answer {
             // display: none;
             max-height: 0px;
-            font-size: 1.2vw;
+            font-size: 1.1vw;
             padding: 0 20px;
             overflow: hidden;
             background-color: var(--color-white);
@@ -1274,9 +1274,9 @@
         .answer.show {
             // display: block;
             width: 100%;
-            max-height:400px;
+            max-height:800px;
             background-color: var(--color-white);
-            font-size: 1.2vw;
+            font-size: 1.1vw;
             padding: 20px;
         }
     }
