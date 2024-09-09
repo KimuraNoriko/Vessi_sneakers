@@ -26,7 +26,7 @@ hamburgerBtn.addEventListener("click", function () {
 });
 
 //Vessiの特徴sectionで、サイドバーのリンクのスタイルを、右にスクロールで表示されている要素によって変える
-//各特長が表示されるコンテナのクラス　.feature_container → featureContainers
+//各特長が表示されるコンテナのクラス　.feature → features
 
 document.addEventListener('DOMContentLoaded', () => {
     const features = document.querySelectorAll('.feature');
@@ -41,8 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             const featureId = entry.target.id;
             const featureLink = document.querySelector(`a[href="#${featureId}"]`);
-
-            console.log (featureLink);
 
             if (entry.isIntersecting) {
                 featureLink.classList.add('active');
@@ -72,16 +70,18 @@ productShowBtn.forEach(psbtn => {
 
         if (currentlyActiveDetail && currentlyActiveDetail !== productDetail) {
             currentlyActiveDetail.classList.remove("show");
-            currentlyActiveDetail.style.display = "none";
+            // currentlyActiveDetail.style.display = "none";
         }
 
-        if (productDetail.style.display === "flex") {
-            productDetail.style.display = "none";
-            productDetail.classList.remove("show");
-        } else {
-            productDetail.style.display = "flex";
-            productDetail.classList.add("show");
-        }
+        productDetail.classList.toggle("show");//test追加
+
+        // if (productDetail.style.display === "flex") {
+        //     productDetail.style.display = "none";
+        //     productDetail.classList.remove("show");
+        // } else {
+        //     productDetail.style.display = "flex";
+        //     productDetail.classList.add("show");
+        // }
 
         const clickIconProducts = psbtn.querySelector(".click-icon-products");
         const currentlyActiveIconProducts = document.querySelector(".click-icon-products.show");
@@ -111,11 +111,13 @@ questionBtn.forEach(btn => {
         if (currentlyActiveAnswer && currentlyActiveAnswer !== answer) {
             currentlyActiveAnswer.classList.remove("show");
         }
-        if (getComputedStyle(answer).display === "block") {
-            answer.classList.remove("show");
-        } else {
-            answer.classList.add("show");
-        }
+        // if (getComputedStyle(answer).display === "block") {
+        //     answer.classList.remove("show");
+        // } else {
+        //     answer.classList.add("show");
+        // }
+
+        answer.classList.toggle("show");
 
         const clickIconFaq = btn.querySelector(".click-icon-faq");
         const currentlyActiveIconFaq = document.querySelector(".click-icon-faq.show");
@@ -124,9 +126,11 @@ questionBtn.forEach(btn => {
         }
 
         clickIconFaq.classList.toggle("show");
-
     });
+
 });
+
+
 
 
 // コピーライトの年度（currentYear)に現在の年度を表示する

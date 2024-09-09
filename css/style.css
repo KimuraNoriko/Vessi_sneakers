@@ -617,10 +617,21 @@ p {
 #products .products_all .products_athletic .products_container,
 #products .products_all .products_casual .products_container,
 #products .products_all .products_allterrain .products_container {
-  display: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.8s ease-in-out;
+}
+#products .products_all .products_athletic .products_container.show,
+#products .products_all .products_casual .products_container.show,
+#products .products_all .products_allterrain .products_container.show {
+  display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   padding: 30px 0;
+  max-height: 600px;
 }
 #products .products_all .products_athletic .products_container dd,
 #products .products_all .products_casual .products_container dd,
@@ -750,6 +761,15 @@ p {
     flex-direction: column;
     align-items: center;
     padding: 10px 0;
+  }
+  #products .products_all .products_athletic .products_container.show,
+  #products .products_all .products_casual .products_container.show,
+  #products .products_all .products_allterrain .products_container.show {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 30px 0;
+    max-height: 800px;
   }
   #products .products_all .products_athletic .products_container dd,
   #products .products_all .products_casual .products_container dd,
@@ -1086,11 +1106,16 @@ p {
   background-image: url(/img/subtract-line-w.svg);
 }
 #faq dl .answer {
-  display: none;
+  max-height: 0px;
+  font-size: 1.2vw;
+  padding: 0 20px;
+  overflow: hidden;
+  background-color: var(--color-white);
+  transition: max-height 0.8s ease-in-out;
 }
 #faq dl .answer.show {
-  display: block;
   width: 100%;
+  max-height: 400px;
   background-color: var(--color-white);
   font-size: 1.2vw;
   padding: 20px;
