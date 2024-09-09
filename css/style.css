@@ -14,6 +14,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 
 h1,
@@ -299,22 +300,32 @@ p {
   line-height: 2.5vw;
   margin: 100px auto;
 }
-#features div #features_sidebar #features_sidebar_container ul li a {
+#features div #features_sidebar #features_sidebar_container ul .feature_link {
   width: 14vw;
+  color: rgba(0, 0, 0, 0.1);
   text-decoration: none;
-  color: var(--color-text_color);
   display: flex;
   justify-content: space-between;
   text-align: center;
 }
-#features div #features_sidebar #features_sidebar_container ul li a img {
+#features div #features_sidebar #features_sidebar_container ul .feature_link svg {
   width: 50px;
 }
-#features div #features_sidebar #features_sidebar_container ul li a p {
+#features div #features_sidebar #features_sidebar_container ul .feature_link svg path {
+  fill: rgba(0, 0, 0, 0.2);
+}
+#features div #features_sidebar #features_sidebar_container ul .feature_link p {
   width: 50%;
   font-size: 1vw;
   line-height: 120%;
   margin: auto auto auto 20px;
+  color: rgba(0, 0, 0, 0.2);
+}
+#features div #features_sidebar #features_sidebar_container ul .feature_link.active svg path {
+  fill: var(--color-text_color);
+}
+#features div #features_sidebar #features_sidebar_container ul .feature_link.active p {
+  color: var(--color-text_color);
 }
 #features div #features_all {
   width: 75vw;
@@ -592,6 +603,7 @@ p {
 #products .products_all .products_allterrain dt div button .click-icon-products {
   background-image: url(/img/add-line.svg);
   background-position: center;
+  background-repeat: no-repeat;
   background-size: 3vw;
   width: 30px;
   height: 30px;
@@ -1057,7 +1069,7 @@ p {
   align-items: center;
   padding: 0 20px;
   width: 100%;
-  font-size: 2vw;
+  font-size: 1.4vw;
   color: var(--color-white);
   background-color: var(--color-midnight_green);
   border: 1px solid var(--color-white);
@@ -1094,7 +1106,7 @@ p {
   #faq dl {
     padding: 10px 0 0;
   }
-  #faq dl dt button {
+  #faq dl .question-btn button {
     font-size: 12px;
   }
   #faq dl dd {

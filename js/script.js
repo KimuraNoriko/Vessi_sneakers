@@ -1,3 +1,19 @@
+//PC版ナビゲーションクリック時に、ナビゲーション部分の高さをオフセットしてスクロールする
+
+document.querySelectorAll('a.anchor-link').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();//アンカーリンククリック時の動作を無効化
+
+        const target = document.querySelector(this.getAttribute('href'));//クリックされたリンク先の要素を取得
+        const navbarOffset = document.querySelector('#pc_nav').offsetHeight;
+
+        window.scrollTo({
+            top: target.offsetTop - navbarOffset,
+        });
+    });
+});
+
+
 // ハンバーガーメニューをクリックするとメニューを表示する
 
 const hamburgerBtn = document.getElementById("hamburger-btn");
@@ -7,6 +23,38 @@ hamburgerBtn.addEventListener("click", function () {
     spNav.classList.toggle("show");
     hamburgerBtn.classList.toggle("change");
 
+});
+
+//Vessiの特徴sectionで、サイドバーのリンクのスタイルを、右にスクロールで表示されている要素によって変える
+//各特長が表示されるコンテナのクラス　.feature_container → featureContainers
+
+document.addEventListener('DOMContentLoaded', () => {
+    const features = document.querySelectorAll('.feature');
+
+    const options = {//new IntersectionObserverに設定したコールバック関数が実行されるので、その引数となるオプションを指定。
+        root: document.querySelector('.features'),//監視対象の要素
+        rootMargin: '0px',
+        threshold: 0.5 // 交差する範囲が50%を超えたときに実行
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const featureId = entry.target.id;
+            const featureLink = document.querySelector(`a[href="#${featureId}"]`);
+
+            console.log (featureLink);
+
+            if (entry.isIntersecting) {
+                featureLink.classList.add('active');
+            } else {
+                featureLink.classList.remove('active');
+            }
+        });
+    }, options);
+
+    features.forEach(feature => {
+        observer.observe(feature);
+    });
 });
 
 // 製品ラインナップのラインナップを見るボタンで詳細を表示する

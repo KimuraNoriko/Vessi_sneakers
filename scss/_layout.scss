@@ -291,6 +291,7 @@
     }
 }
 
+//製品の特長
 #features {
     width: 100%;
     background-color: var(--color-white);
@@ -332,16 +333,20 @@
                     line-height: 2.5vw;
                     margin: 100px auto;
 
-                    li a {
+                    .feature_link {
                         width: 14vw;
+                        color: rgba(0, 0, 0, 0.1);
                         text-decoration: none;
-                        color: var(--color-text_color);
                         display: flex;
                         justify-content: space-between;
                         text-align: center;
 
-                        img {
+                        svg {
                             width: 50px;
+                        }
+
+                        svg path {
+                            fill: rgba(0, 0, 0, 0.2);
                         }
 
                         p {
@@ -349,7 +354,18 @@
                             font-size: 1vw;
                             line-height: 120%;
                             margin: auto auto auto 20px;
+                            color: rgba(0, 0, 0, 0.2);
 
+                        }
+                    }
+
+                    .feature_link.active{
+                        svg path {
+                            fill: var(--color-text_color);
+                        }
+
+                        p {
+                            color: var(--color-text_color);
                         }
                     }
                 }
@@ -618,8 +634,9 @@
                         cursor: pointer;
 
                         .click-icon-products {
-                            background-image: url(/img/add-line.svg);
+                            background-image: url(/img/add-line.svg) ;
                             background-position: center;
+                            background-repeat: no-repeat;
                             background-size: 3vw;
                             width: 30px;
                             height: 30px;
@@ -1189,7 +1206,7 @@
                 align-items: center;
                 padding: 0 20px;
                 width: 100%;
-                font-size: 2vw;
+                font-size: 1.4vw;
                 color: var(--color-white);
                 background-color: var(--color-midnight_green);
                 border: 1px solid var(--color-white);
@@ -1219,7 +1236,7 @@
             width: 100%;
             background-color: var(--color-white);
             font-size: 1.2vw;
-            padding: 20px;            
+            padding: 20px;
         }
     }
 }
@@ -1237,7 +1254,7 @@
         dl {
             padding: 10px 0 0;
 
-            dt {
+            .question-btn {
                 button {
                     font-size: 12px;
                 }
@@ -1312,8 +1329,8 @@ footer {
             height: 30px;
         }
 
-        div{
-            width:50%;
+        div {
+            width: 50%;
         }
 
         small {
