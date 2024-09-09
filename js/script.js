@@ -94,6 +94,23 @@ productShowBtn.forEach(psbtn => {
     });
 });
 
+//雲を要素が表示されているときだけふわふわ動かす
+
+document.addEventListener('DOMContentLoaded', () => {
+    const reviewList = document.querySelectorAll('.review_list');
+    const cloudWhite = document.querySelectorAll('.cloud_white');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                cloudWhite.style.animationPlayState = "running";
+            }else{
+                cloudWhite.style.animationPlayState = "paused";
+            }
+        });
+    });
+    observer.observe(reviewList);
+});
+
 // FAQの質問ボタンで詳細を表示する
 // クリックする要素のクラス　question-btn 　→ questionBtn
 // クリックで表示される要素のクラス　answer 　→ answer
