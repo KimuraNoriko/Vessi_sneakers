@@ -1,7 +1,7 @@
-//PC版ナビゲーションクリック時に、ナビゲーション部分の高さをオフセットしてスクロールする
+//アンカーリンククリック時に、ナビゲーション部分の高さをオフセットしてスクロールする
 
 document.querySelectorAll('a.anchor-link').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();//アンカーリンククリック時の動作を無効化
 
         const target = document.querySelector(this.getAttribute('href'));//クリックされたリンク先の要素を取得
@@ -14,7 +14,7 @@ document.querySelectorAll('a.anchor-link').forEach(anchor => {
 });
 
 
-// ハンバーガーメニューをクリックするとメニューを表示する
+// ハンバーガーメニューをクリックするとメニューを表示非表示
 
 const hamburgerBtn = document.getElementById("hamburger-btn");
 
@@ -22,8 +22,26 @@ hamburgerBtn.addEventListener("click", function () {
     const spNav = document.getElementById("sp_nav");
     spNav.classList.toggle("show");
     hamburgerBtn.classList.toggle("change");
-
 });
+
+// メニュー項目をクリックするとメニューを閉じ, ナビゲーション部分の高さをオフセットしてスクロールする
+const spNavItems = document.querySelectorAll(".sp_nav_item");
+const spNav = document.getElementById("sp_nav");
+
+spNavItems.forEach(spNavItem => {
+    spNavItem.addEventListener("click", function (e) {
+        spNav.classList.remove("show");
+        hamburgerBtn.classList.remove("change");
+        e.preventDefault();//アンカーリンククリック時の動作を無効化
+
+        const target = document.querySelector(this.getAttribute('href'));//クリックされたリンク先の要素を取得
+        const navbarOffset = document.querySelector('#sp_top').offsetHeight;
+
+        window.scrollTo({
+            top: target.offsetTop - navbarOffset,
+        });
+    });
+})
 
 //Vessiの特徴sectionで、サイドバーのリンクのスタイルを、右にスクロールで表示されている要素によって変える
 //各特長が表示されるコンテナのクラス　.feature → features
@@ -54,6 +72,26 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(feature);
     });
 });
+
+//Vessiの特徴sectionの各特長を途中までスクロールするとふわっと全表示されるところまでスクロールする →うまくいかなーい
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     const features = document.querySelectorAll('.feature');
+
+//     const observer = new IntersectionObserver((entries) => {
+//         entries.forEach(entry => {
+//             if (entry.isIntersecting && entry.intersectionRatio >= 0.2) {
+//                 entry.target.scrollIntoView({ behavior: 'smooth' });
+//             }
+//         });
+//     }, {
+//         threshold: 0.2
+//     });
+
+//     features.forEach(feature => {
+//         observer.observe(feature);
+//     });
+// });
 
 // 製品ラインナップのラインナップを見るボタンで詳細を表示する
 // クリックする要素のクラス　product-show-btn　→ productShowBtn
@@ -91,21 +129,28 @@ productShowBtn.forEach(psbtn => {
 
         clickIconProducts.classList.toggle("show");
 
+        // 製品リストが表示されたときにscroll位置を調整する→いまいちだけど、まあまあ？？？
+        if (productDetail.classList.contains("show")) {
+            productDetail.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+
     });
 });
 
 //雲を要素が表示されているときだけふわふわ動かす
 
 document.addEventListener('DOMContentLoaded', () => {
-    const reviewList = document.querySelectorAll('.review_list');
+    const reviewList = document.querySelector('.review_list');
     const cloudWhite = document.querySelectorAll('.cloud_white');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if(entry.isIntersecting) {
-                cloudWhite.style.animationPlayState = "running";
-            }else{
-                cloudWhite.style.animationPlayState = "paused";
-            }
+            cloudWhite.forEach(cloud => {
+                if (entry.isIntersecting) {
+                    cloud.style.animationPlayState = "running";
+                } else {
+                    cloud.style.animationPlayState = "paused";
+                }
+            });
         });
     });
     observer.observe(reviewList);
@@ -143,6 +188,12 @@ questionBtn.forEach(btn => {
         }
 
         clickIconFaq.classList.toggle("show");
+
+        //回答が表示されたときにscroll位置を調整する
+
+        if (answer.classList.contains("show")) {
+            answer.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
     });
 
 });

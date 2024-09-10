@@ -105,7 +105,7 @@
     display: none;
 }
 
-// SP版MV部分のメディアクエリー
+// SP版MV・ナビ部分のメディアクエリー
 
 @include mq(medium) {
 
@@ -121,7 +121,7 @@
 
         #sp_top {
             width: 100%;
-            height: 65px;
+            height: 70px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -213,7 +213,7 @@
 
         #sp_mv {
             width: 100%;
-            height: calc(100vh - 65px);
+            height: calc(100vh - 70px);
             background-image: url(../img/shoes_in_water_ex.png);
             background-size: cover;
             background-position: center;
@@ -239,7 +239,7 @@
             display: flex;
             flex-direction: column;
             width: 100%;
-            height: calc(100vh - 65px);
+            height: calc(100vh - 60px);
             background-color: var(--color-midnight_green);
             color: var(--color-white);
             position: fixed;
@@ -255,10 +255,10 @@
                 align-items: center;
                 list-style-type: none;
                 line-height: 3vw;
-                margin: 80px auto 40px;
+                margin: 40px auto 40px;
 
                 li {
-                    margin: 30px 0;
+                    margin: 24px 0;
 
                     a {
                         font-size: 20px;
@@ -358,7 +358,7 @@
                         }
                     }
 
-                    .feature_link.active{
+                    .feature_link.active {
                         svg path {
                             fill: var(--color-text_color);
                         }
@@ -374,13 +374,15 @@
 
         #features_all {
             width: 75vw;
+            // height:400vh;
             display: flex;
             flex-direction: column;
 
-            #feature_waterproof,
-            #feature_comfort,
-            #feature_lightweight,
-            #feature_vegan {
+            // #feature_waterproof,
+            // #feature_comfort,
+            // #feature_lightweight,
+            // #feature_vegan 
+            .feature {
                 height: 100vh;
                 width: 100%;
                 display: flex;
@@ -388,6 +390,7 @@
                 justify-content: center;
                 background-color: var(--color-white);
                 z-index: 100;
+                transition: tranform 0.8s ease-in-out;
 
                 .feature_container {
                     display: flex;
@@ -490,7 +493,7 @@
         div {
             #features_sidebar {
                 width: 140px;
-                margin-left: 30px;
+                margin-left: 10px;
                 background-color: transparent;
 
                 #features_sidebar_container {
@@ -603,9 +606,10 @@
         .products_casual,
         .products_allterrain {
             width: 100%;
+            height:auto;
 
             dt {
-                padding: 20px;
+                padding: 20px 20px 0 20px;
                 position: relative;
 
                 p {
@@ -633,7 +637,7 @@
                         cursor: pointer;
 
                         .click-icon-products {
-                            background-image: url(/img/add-line.svg) ;
+                            background-image: url(/img/add-line.svg);
                             background-position: center;
                             background-repeat: no-repeat;
                             background-size: 3vw;
@@ -655,6 +659,7 @@
                 display: flex;
                 flex-direction: row;
                 justify-content: space-evenly;
+                margin:0 0 30px 0;
                 overflow: hidden;
                 max-height: 0;
                 transition: max-height 0.8s ease-in-out;
@@ -663,8 +668,7 @@
                     display: flex;
                     flex-direction: row;
                     justify-content: space-evenly;
-                    padding: 30px 0;
-                    max-height: 600px;
+                    max-height: 800px;
                 }
 
                 dd {
@@ -746,9 +750,8 @@
 @include mq(medium) {
 
     #products {
-        padding: 30px 40px 20px;
+        padding: 30px 30px 20px;
         background-size: 100%;
-
 
         h2 {
             font-size: 20px;
@@ -801,14 +804,14 @@
                 .products_container {
                     flex-direction: column;
                     align-items: center;
-                    padding: 10px 0;
+                    padding: 0px 0;
 
                     &.show {
                         display: flex;
                         flex-direction: column;
                         justify-content: space-evenly;
-                        padding: 30px 0;
-                        max-height: 800px;
+                        padding: 0px 0;
+                        max-height: 1000px;
                     }
 
                     dd {
@@ -821,6 +824,7 @@
 
                             img {
                                 width: 50%;
+                                height: 50%;
                             }
 
                             div {
@@ -1044,25 +1048,25 @@
     }
 }
 
-@keyframes float{
-    0%{
-        transform: translate(0,0);
+@keyframes float {
+    0% {
+        transform: translate(0, 0);
     }
 
-    25%{
-        transform: translate(20px,-20px);
+    25% {
+        transform: translate(20px, -20px);
     }
 
-    50%{
-        transform: translate(40px,0px);
+    50% {
+        transform: translate(40px, 0px);
     }
 
-    75%{
-        transform: translate(20px,-20px);
+    75% {
+        transform: translate(20px, -20px);
     }
 
-    100%{
-        transform: translate(0,0);
+    100% {
+        transform: translate(0, 0);
     }
 }
 
@@ -1130,7 +1134,7 @@
                 width: 30vw;
 
                 span {
-                    font-size: 10px;
+                    font-size: 2vw;
                 }
             }
         }
@@ -1197,6 +1201,10 @@
             padding: 30px 0 0;
 
             li {
+                img {
+                    margin: 30px 30px 30px 0;
+                }
+
                 div {
                     h3 {
                         font-size: 12px;
@@ -1274,7 +1282,7 @@
         .answer.show {
             // display: block;
             width: 100%;
-            max-height:800px;
+            max-height: 800px;
             background-color: var(--color-white);
             font-size: 1.1vw;
             padding: 20px;
@@ -1301,7 +1309,11 @@
                 }
             }
 
-            dd {
+            .answer {
+                font-size: 10px;
+            }
+
+            .answer.show {
                 font-size: 10px;
             }
 
